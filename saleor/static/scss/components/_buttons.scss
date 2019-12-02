@@ -79,7 +79,7 @@ a.btn {
       padding-right: $global-margin / 4;
     }
     &.facebook {
-      background: #3b5998;
+      background: rgb(147, 197, 114);
       &:hover {
         background: darken(#3b5998, 10%);
       }
@@ -95,4 +95,8 @@ a.btn {
     outline: none;
     box-shadow: none;
   }
+}
+
+a.social-footer {
+	background-color: rgb(147, 197, 114) !important;
 }

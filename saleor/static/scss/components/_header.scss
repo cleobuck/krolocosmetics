@@ -1,3 +1,34 @@
+// changes from bootstrap
+
+.navbar {
+	justify-content: start;	
+}
+
+// changes
+
+.login-nav {
+
+	list-style-type: none;
+	li {
+		padding: 0 5px;
+		a {
+			color: white;
+			font-size: 0.7rem;
+		}
+	}
+}
+
+.login-row {
+	justify-content: flex-end;
+}
+
+
+.two-navs {
+	
+	align-self: start;
+}
+
+
 .navigation {
   ul {
     border-bottom: 1px solid $gray;
@@ -172,7 +203,6 @@
     }
   }
   &__logo {
-    padding: $global-padding * 2 0;
     display: flex;
     align-items: center;
     a svg {
@@ -242,7 +272,7 @@
         display: block;
         border: solid 1px transparent;
         border-radius: 4px 4px 0 0;
-        padding: $global-padding * 2.5 $global-padding * 1.5;
+        padding: $global-padding * 1.25 $global-padding * 1.5;
         position: absolute;
         right: 0;
         top: 0;
