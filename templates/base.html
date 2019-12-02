@@ -23,8 +23,9 @@
     {% for lang_code, language_name in LANGUAGES %}
       <link rel="alternate" hreflang="{{ lang_code }}" href="{% translate_url url=request.path lang_code=lang_code %}" />
     {% endfor %}
-  {% endblock meta %}
 
+  {% endblock meta %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   {% include 'favicon.html' %}
   {% render_bundle 'storefront' 'css' attrs='async' %}
 
@@ -51,19 +52,45 @@
 {% block header %}
   <header class="navbar" role="navigation">
     <div class="container-fluid">
-      <div class="pl-4 col-3 col-md-3 navbar__logo">
+      <div class="pl-4 col-12 justify-content-center col-md-3 navbar__logo ">
         <a href="{% url 'home' %}">
           <img src="{% static "images/logo-light.jpg" %}"/>
         </a>
       </div>
 
-      <div class = "offset-1 col-8 two-navs">
+      <div class="menu-mobile-icons justify-content-center col-12 d-flex d-md-none">
+
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu">
+        <svg data-src="{% static "images/mobile-menu.svg" %}" class="text-white" width="56px" height="40px"/>
+       </button>
+
+       <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#connect-menu">
+        <i class="fas fa-user"></i>
+       </button> 
+
+        <a rel="nofollow" class="checkout__icon d-md-none d-flex align-items-center text-white" href="{% url "checkout:index" %}">
+          <span class="checkout-label d-none d-md-inline-block">
+            {% trans "Your cart" context "Main navigation item" %}
+          </span>
+          <div class="navbar__brand__checkout__icon">
+            <svg data-src="{% static "images/checkout.svg" %}" width="50" height="50"/>
+          </div>
+          <span class="badge {% if not checkout_counter %}empty{% endif %}">
+            {% if checkout_counter %}
+              {{ checkout_counter }}
+            {% else %}
+              0
+            {% endif %}
+          </span>
+        </a>
+
+      </div>
+
+      <div class = " col-12 col-md-8 two-navs navbar-expand-md ">
 
 
-        <div class="row offset-6 col-6 login-row">
-
-
-          <ul class="login-nav navbar">
+        <div class="row col-12 login-row collapse navbar-collapse" id="connect-menu"">
+          <ul class="login-nav text-center d-md-flex ">
             {% if user.is_authenticated %}
             {% if user.is_staff or request.impersonator.is_staff %}
             <li>
@@ -102,12 +129,12 @@
         </ul>
         </div>
 
-        <div class = "row nav-row">
-          <nav class="navigation col-9">
+        <div class = "row nav-row  justify-content-center navbar-expand-md">
+          <nav class="navigation col-9 collapse navbar-collapse" id="main-menu">
             {% menu site_menu=site.settings.top_menu horizontal=True %}
           </nav>
 
-          <div class="navbar__brand__checkout col-3">
+          <div class="navbar__brand__checkout col-3 d-none d-md-block">
             <a rel="nofollow" class="checkout__icon" href="{% url "checkout:index" %}">
               <span class="checkout-label d-none d-md-inline-block">
                 {% trans "Your cart" context "Main navigation item" %}
@@ -162,7 +189,7 @@
     <div class="container">
       <div class="row">
           {% footer_menu site_menu=site.settings.bottom_menu %}
-        <div class="col-md-2 col-6">
+        <div class="col-md-2 col-12">
         <ul class="menu">
           <li class="nav-item__dropdown menu__item">
             <a>

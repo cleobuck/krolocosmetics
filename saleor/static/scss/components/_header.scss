@@ -27,6 +27,34 @@
 	
 	align-self: start;
 }
+.navbar__brand__checkout__icon {
+	padding-left: 1rem;
+}
+.menu-mobile-icons {
+ background: #93c572;
+ .badge.position-absolute {
+	font-size: 3rem;
+ }
+}
+@media screen and (max-width:540px) {
+	.nav-row {
+		width: 100%;
+	}
+	.maincontent { 
+		margin-top: 3px;
+	}
+	.login-container {
+		width: 100%;
+	}
+	.login-nav {
+		width: 100%;
+		li, a {
+		font-size: 1.3rem !important;
+		padding-top: 5px;
+	 }
+	}
+}
+////////////////////////////////////////////////////////////////
 
 
 .navigation {
